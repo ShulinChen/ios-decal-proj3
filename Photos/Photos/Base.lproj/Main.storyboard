@@ -55,7 +55,7 @@
                                 <animations/>
                                 <connections>
                                     <outlet property="imageView" destination="hje-ln-qcD" id="GTH-I2-jaZ"/>
-                                    <segue destination="xq1-F9-wwK" kind="show" id="cqe-ja-hsE"/>
+                                    <segue destination="xq1-F9-wwK" kind="show" identifier="imagePointer" id="cqe-ja-hsE"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -70,10 +70,10 @@
             </objects>
             <point key="canvasLocation" x="155" y="105"/>
         </scene>
-        <!--View Controller-->
+        <!--Single Controller-->
         <scene sceneID="zyG-XQ-Suq">
             <objects>
-                <viewController id="xq1-F9-wwK" sceneMemberID="viewController">
+                <viewController id="xq1-F9-wwK" customClass="SingleController" customModule="Photos" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cGd-61-1IE"/>
                         <viewControllerLayoutGuide type="bottom" id="2ac-AG-1xV"/>
@@ -81,13 +81,84 @@
                     <view key="view" contentMode="scaleToFill" id="mwP-ji-AJ4">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="szi-ic-Mr8">
+                                <rect key="frame" x="77" y="138" width="446" height="324"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="324" id="XNy-e1-exn"/>
+                                    <constraint firstAttribute="width" constant="446" id="mjk-rR-FXc"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TXA-Vh-3uy">
+                                <rect key="frame" x="177" y="533" width="247" height="21"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="pki-6e-KR2"/>
+                                    <constraint firstAttribute="width" constant="247" id="taj-cc-ldq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ycs-p0-xtg">
+                                <rect key="frame" x="177" y="494" width="247" height="21"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="247" id="JAW-aU-X55"/>
+                                    <constraint firstAttribute="height" constant="21" id="q4h-yA-sUg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JhB-5L-7mU">
+                                <rect key="frame" x="177" y="470" width="245" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="maZ-Vd-mYD">
+                                <rect key="frame" x="286" y="558" width="28" height="22"/>
+                                <animations/>
+                                <state key="normal" title="Button" image="instagram_icon_by_poserfan-d6ur05a.gif"/>
+                                <connections>
+                                    <action selector="likeBtn:" destination="xq1-F9-wwK" eventType="touchUpInside" id="OY7-EZ-y2P"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="TXA-Vh-3uy" firstAttribute="centerX" secondItem="ycs-p0-xtg" secondAttribute="centerX" id="0NX-kM-ttf"/>
+                            <constraint firstItem="TXA-Vh-3uy" firstAttribute="top" secondItem="ycs-p0-xtg" secondAttribute="bottom" constant="18" id="4cu-ri-dEY"/>
+                            <constraint firstItem="JhB-5L-7mU" firstAttribute="leading" secondItem="ycs-p0-xtg" secondAttribute="leading" id="7HL-0B-gdP"/>
+                            <constraint firstItem="szi-ic-Mr8" firstAttribute="centerX" secondItem="mwP-ji-AJ4" secondAttribute="centerX" id="9qJ-ax-uKP"/>
+                            <constraint firstItem="maZ-Vd-mYD" firstAttribute="leading" secondItem="TXA-Vh-3uy" secondAttribute="trailing" constant="-138" id="G2n-8z-cTP"/>
+                            <constraint firstItem="szi-ic-Mr8" firstAttribute="centerX" secondItem="JhB-5L-7mU" secondAttribute="centerX" id="MR5-gw-ZT5"/>
+                            <constraint firstItem="ycs-p0-xtg" firstAttribute="leading" secondItem="szi-ic-Mr8" secondAttribute="leading" constant="100" id="UOZ-EJ-jFl"/>
+                            <constraint firstItem="maZ-Vd-mYD" firstAttribute="centerY" secondItem="szi-ic-Mr8" secondAttribute="centerY" constant="269" id="ccp-GZ-yEV"/>
+                            <constraint firstItem="maZ-Vd-mYD" firstAttribute="leading" secondItem="TXA-Vh-3uy" secondAttribute="leading" constant="109" id="d2F-Bg-1PL"/>
+                            <constraint firstItem="ycs-p0-xtg" firstAttribute="top" secondItem="JhB-5L-7mU" secondAttribute="bottom" constant="3" id="gA1-wi-0ns"/>
+                            <constraint firstItem="JhB-5L-7mU" firstAttribute="top" secondItem="szi-ic-Mr8" secondAttribute="bottom" constant="8" id="pmL-tQ-cN4"/>
+                            <constraint firstItem="2ac-AG-1xV" firstAttribute="top" secondItem="TXA-Vh-3uy" secondAttribute="bottom" constant="46" id="qnQ-9l-IAZ"/>
+                            <constraint firstItem="szi-ic-Mr8" firstAttribute="centerY" secondItem="mwP-ji-AJ4" secondAttribute="centerY" id="zqC-W7-ZTi"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="date" destination="ycs-p0-xtg" id="f96-gf-Oix"/>
+                        <outlet property="likes" destination="TXA-Vh-3uy" id="mtd-Ur-o4a"/>
+                        <outlet property="name" destination="JhB-5L-7mU" id="WUZ-EW-4Pg"/>
+                        <outlet property="singleView" destination="szi-ic-Mr8" id="KN3-l3-dq4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Vq-iR-9Jm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="852" y="105"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="instagram_icon_by_poserfan-d6ur05a.gif" width="16" height="16"/>
+    </resources>
 </document>

@@ -10,6 +10,7 @@ import UIKit
 
 class PhotosCollectionViewController: UICollectionViewController {
     var photos: [Photo]!
+    var indexPhoto = 0
     
   
     override func viewDidLoad() {
@@ -29,14 +30,37 @@ class PhotosCollectionViewController: UICollectionViewController {
     /* Creates a session from a photo's url to download data to instantiate a UIImage. 
        It then sets this as the imageView's image. */
     
-//    
-//    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-//        if photos != nil{
-//            return photos.count
+
+    
+//    override func prepareForSegue(segue: UIStoryboardSegue,sender:AnyObject?){
+//        if segue.identifier = ”goToViewB” {
+//            let nav =
+//            segue.destinationViewController as! UINavigationViewController
+//            let targetVC = nav.viewControllers.first as! BViewController
+//            targetVC.someValue = self.someValue
 //        }
-//        return 0
-//       
 //    }
+
+        //transition twice!
+//        override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+//            indexPhoto = indexPath.row
+//            performSegueWithIdentifier("imagePointer", sender: self)
+//        }
+    
+    func collectionView(collection: UICollectionView, selectedItemIndex: NSIndexPath) {
+        self.performSegueWithIdentifier("imagePointer", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "imagePointer") {
+            if let indexPath = self.collectionView?.indexPathForCell(sender as! UICollectionViewCell) {
+                    let detailVC = segue.destinationViewController as! SingleController
+                    detailVC.photoForDetail = self.photos[indexPath.row]
+            }
+        }
+    }
+    
+
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if photos != nil {
@@ -64,7 +88,6 @@ class PhotosCollectionViewController: UICollectionViewController {
     }
     
     //when clicking on a photo.. it goes to another detailed view
-    
     //func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
      //   code
     //}
